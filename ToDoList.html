@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title> Simple TO DO List </title>
+
+    <style>
+
+        * {
+			box-sizing: border-box;
+			font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto,
+				oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue",
+				Arial, sans-serif;			
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		body {
+			background-color: #ffffff;
+		}
+
+        body h3 {
+			display: fixed;
+			margin: 0px auto;
+			width: 100%;
+            color: #303030;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #9d9d9d;
+		}
+
+        .form {
+			display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+			margin: 0px auto;
+			width: 500px;
+            padding-top: 0px;
+            margin-bottom: 10px;
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+		}
+
+        .form .txtinput {
+            display: flex;
+			justify-content: center;
+			align-items: center;
+            width: 80%;
+            border-left: 3px solid #9d9d9d;
+            border-top: 3px solid #9d9d9d;
+            border-bottom: 3px solid #9d9d9d;
+            border-right: 0px solid #9d9d9d;
+            padding: 10px;            
+            margin-right: 0px;
+		}
+
+        .form .colorlist {
+            display: flex;
+            text-align: center;
+			width: 8%;
+            border: 3px solid #9d9d9d;
+            color: darkslategray;
+            font-size: 16px;
+            padding: 10px;
+            margin-left: 0px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        .form .btninput {
+            display: flex;
+            text-align: center;
+			width: 10%;
+            border: 3px solid #30c452;
+            background-color: #30c452;
+            color: whitesmoke;
+            font-size: 16px;
+            margin-left: 4px;
+		}
+        
+        .form .btninput:hover {            
+            border: 3px solid #38cf5b;
+            background-color: #38cf5b;
+		}
+
+        .form .btninput:active {            
+            border: 3px solid #28a545;
+            background-color: #28a545;
+		}
+        
+        .listdiv {
+			display: fixed;
+			margin: 140px auto;
+			width: 500px;
+            border: 2px solid #80a3d7;
+            background-color: #f0f0f0;            
+		}
+
+        .formlist {
+            display: inline-block;
+            width: 95%;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .list {
+			display: inline;
+            align-items: left;
+		}
+
+        .list li {
+            background-color: #fff875;
+            border: 1px solid #ffca18;
+            list-style-type: none;
+            padding-left: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+
+        .list li input {
+            margin-left: 5px;
+        }
+
+        .list i {
+            vertical-align: middle;
+            font-size:20px;
+        }
+
+        .reset {
+            display: inline-block;
+            width: 20%;
+            background-color: #c3c3c3;
+            border: 3px solid #c3c3c3;
+            color: #000000;
+            padding: 5px;
+            text-align: center;
+            margin-left: 80%;
+            margin-top: 10px;
+        }
+
+        .reset:disabled {
+            background-color: #e6e6e6;
+            border: 3px solid #c3c3c3;
+            color: #c3c3c3;
+        }
+
+        .reset:hover {
+            border: 3px solid #959595;
+        }
+
+        .reset:active {
+            background-color: #898989;
+            border: 3px solid #898989;
+        }
+
+    </style>
+
+</head>
+<body onload="updateList(); showColors();">          
+
+    <div class="form" >            
+            <input class="txtinput" type="text" name="newtask" id="newtsk" placeholder="New task">
+            <select class="colorlist" id="colors" ></select>
+            <input class="btninput" on onclick="newTask(document.getElementsByClassName('txtinput')[0].value,
+                document.getElementById('colors').style)" type="button" value="Add">
+    </div>
+
+    <div class="listdiv">
+        <h3 class="title"><i class="material-icons" style="font-size: 20px;vertical-align: middle;">bookmark_border</i> TO DO List <small>ver 0.4</small> </h3>
+        <div class="formlist">
+            <ul class="list">
+                <li id="0"> <i class="material-icons">attach_file</i> <input type="checkbox" onclick="checkListTask(this)" name="rowArray[]" id="ch0"> <label for="ch0">
+                    My first task today ... </label> </li>
+                <li id="1"> <i class="material-icons">attach_file</i> <input type="checkbox" onclick="checkListTask(this)" name="rowArray[]" id="ch1"> <label for="ch1">
+                    My task onother day ...<br> and much more ... </label> </li>
+            </ul>
+            <input class="reset" type="submit" value="Clear" onclick="deleteTasks()">
+        </div>
+    </div>
+
+    <p id="checked"></p>
+
+    <script src="tojscript.js"></script>
+
+</body>
+</html>
