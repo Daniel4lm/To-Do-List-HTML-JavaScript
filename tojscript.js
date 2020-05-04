@@ -1,5 +1,7 @@
-        
+//$(document).ready(function(){
+    
     let checkTaskList = [];
+    let checkMarkTask;
     
     function showColors() {
         
@@ -27,32 +29,59 @@
 
     function updateList() {
         
-        document.getElementsByClassName("txtinput")[0].value = "";
+        $(".txtinput").val("");  //document.getElementsByClassName("txtinput")[0].value = "";
 
         checkTaskList.length = 0;
         const allList = document.querySelectorAll("li");
         
         let desigTask = false;
+        let oneTask, oneTskIndex = 0;
 
         for (let e = 0; e < allList.length; e++) {
             checkTaskList[allList[e].id] = allList[e].getElementsByTagName("input")[0].checked;
-            desigTask = (checkTaskList[allList[e].id] == true) ? true : desigTask;            
+
+            if (checkTaskList[allList[e].id] == true) {
+                desigTask = true;
+                oneTask = allList[e].getElementsByTagName("input")[0].getElementById;
+                oneTskIndex += 1;
+            }
+            //desigTask = (checkTaskList[allList[e].id] == true) ? true : desigTask;
+            
         }
+
+        document.getElementById("checked").innerHTML = oneTskIndex;
+
         /*
         document.getElementById("checked").innerHTML = "";
         allList.forEach(element => {
             document.getElementById("checked").innerHTML += element.id + " " + element.getElementsByTagName("input")[0].checked + "<br>";
         });*/
 
-        document.getElementsByClassName("reset")[0].disabled = (!desigTask) ? true : false ;
+        //document.getElementsByClassName("reset")[0].disabled = (!desigTask) ? true : false ;
+
+        $(".reset").attr("disabled", (!desigTask) ? true : false);
+        $(".mark").attr("disabled", (!desigTask) ? true : false);
+        $(".edit").attr("disabled", (oneTskIndex > 0 && oneTskIndex < 2) ? false : true);
         
     }
+
+    $(".mark").click( function() {
+        for (let chel in checkTaskList) {
+            if (checkTaskList[chel] == true) {
+                $("#" + chel).children("label").css("text-decoration", "line-through");
+                //$("#" + chel).children("input").attr("disabled", "true");
+            }
+        }
+        updateList();
+
+    });
 
     function deleteTasks() {
 
         for (let chel in checkTaskList) {
             if (checkTaskList[chel] == true) {
-                document.getElementById(chel).remove();
+                $("#" + chel).remove();
+                //document.getElementById(chel).remove();
             }
         }
         updateList();
@@ -72,6 +101,9 @@
             //let parameter = location.search.substring(1).split("=")[1];
             let liElem = document.createElement("li");
             liElem.id = document.getElementsByClassName("list")[0].childElementCount;
+            if (tskcol.backgroundColor == "rgb(109, 109, 109)") {
+                liElem.style.color = "rgb(255, 255, 255)";
+            }
             liElem.style.backgroundColor = tskcol.backgroundColor;
             liElem.style.borderColor = tskcol.borderColor;
             let iElem = document.createElement("i");
@@ -95,3 +127,4 @@
         }
     }
 
+//});
