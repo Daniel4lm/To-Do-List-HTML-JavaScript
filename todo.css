@@ -1,0 +1,193 @@
+
+        * {
+			box-sizing: border-box;
+			font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto,
+				oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue",
+				Arial, sans-serif;			
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		body {
+			background-color: #ffffff;
+		}
+
+        body h3 {
+			display: fixed;
+			margin: 0px auto;
+			width: 100%;
+            color: #303030;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #9d9d9d;
+		}
+
+        .form {
+			display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+			margin: 0px auto;
+			width: 500px;
+            padding-top: 0px;
+            margin-bottom: 10px;
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+		}
+
+        .colorSlider {
+            width: 100%;
+            /*display: inline-block;  */
+            float: right;          
+            margin-top: 2px;
+            margin-bottom: 24px;
+            height: 42px;
+            background-color: lightgrey;
+            border: 1px solid #585858;
+        }
+
+        .colorSlider div {
+            float: left;
+            height: 100%;            
+            width: 10%;
+            padding-top: 10px;
+        /*    padding-left: 40px;
+            padding-top: 0px;
+            padding-bottom: 20px;
+            margin-left: 2px;*/            
+        }
+
+        .colorSlider .coltitle {
+            text-align: center;            
+        }
+
+        .form .txtinput {
+            display: flex;
+			justify-content: center;
+			align-items: center;
+            width: 80%;
+            border-left: 2px solid #9d9d9d;
+            border-top: 2px solid #9d9d9d;
+            border-bottom: 2px solid #9d9d9d;
+            border-right: 0px solid #9d9d9d;
+            padding: 10px;            
+            /**margin-right: 0px;*/
+		}
+
+        .form .colorbtn {
+            display: flex;
+            text-align: center;
+            font-weight: bold;
+            color: ;
+			width: 8%;
+            border: 2px solid #9d9d9d;
+            color: darkslategray;
+            font-size: 16px;
+            padding: 10px;
+            
+        }
+
+        .form .btninput {
+            display: flex;
+            text-align: center;
+			width: 10%;
+            border: 3px solid #30c452;
+            background-color: #30c452;
+            color: whitesmoke;
+            font-size: 16px;
+            margin-left: 4px;
+		}
+        
+        .form .btninput:hover {            
+            border: 3px solid #38cf5b;
+            background-color: #38cf5b;
+		}
+
+        .form .btninput:active {            
+            border: 3px solid #28a545;
+            background-color: #28a545;
+		}
+        
+        .listdiv {
+			display: fixed;
+			margin: 140px auto;
+			width: 500px;
+            border: 2px solid #80a3d7;
+            background-color: #f0f0f0;            
+		}
+
+        .formlist {
+            display: inline-block;
+            width: 95%;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .list {
+			display: inline;
+            align-items: left;
+		}
+
+        .list li {
+            background-color: #fff875;
+            border: 1px solid #ffca18;
+            list-style-type: none;
+            padding-left: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+
+        .list li input {
+            margin-left: 5px;
+        }
+
+        .list i {
+            vertical-align: middle;
+            font-size:20px;
+        }
+
+        .edit, .reset, .mark {
+            /*display: inline-block;*/
+            width: 20%;
+            background-color: #c3c3c3;
+            border: 3px solid #c3c3c3;
+            color: #000000;
+            padding: 5px;
+            text-align: center;
+            float: right;
+            margin-left: 5px;
+            margin-top: 10px;
+        }
+
+        .reset:disabled, .edit:disabled, .mark:disabled {
+            background-color: #e6e6e6;
+            border: 3px solid #c3c3c3;
+            color: #c3c3c3;
+        }
+
+        .mark:hover {
+            background-color: rgb(1, 182, 53, 30%);
+            border: 3px solid rgb(1, 182, 53, 80%);
+        }
+
+        .edit:hover {
+            background-color: rgb(255, 104, 0, 30%);
+            border: 3px solid rgb(255, 104, 0, 80%);
+        }
+
+        .reset:hover {
+            background-color: rgb(236, 28, 36, 20%);
+            border: 3px solid rgb(236, 28, 36, 60%);
+        }
+
+        .reset:active, .edit:active, .mark:active {
+            background-color: #898989;
+            border: 3px solid #898989;
+        }        
+

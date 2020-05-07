@@ -5,9 +5,29 @@
     
     function showColors() {
         
-        let colorArray = {'#ffca18':'#fff875','#0ed145':'#73f196','#db356a':'#ffaec8','#b83dba':'#f187f3','#3ed0cb':'#83ede9','#d04552':'#ff9ea7','#ff7f27':'#ffb785','#aaaaaa':'#c3c3c3','#6d6d6d':'#6d6d6d'};
+        let colorArray = {'#ffca18':'#fff875', // yellow
+                          '#02bf37':'#73f196', // green
+                          '#db356a':'#ffaec8', // pink
+                          '#b83dba':'#f187f3', // violet
+                          '#30b3af':'#83ede9', // blue
+                          '#d04552':'#ff9ea7', // red
+                          '#ff7f27':'#ffb785', // orange
+                          '#919191':'#c3c3c3', // grey
+                          '#6d6d6d':'#6d6d6d' // darkgrey
+        };
+                
         let index = 0;
+        $(".colorSlider div").eq(index).css("width", "28%");
         for (let ce in colorArray) {
+
+            $(".colorSlider div").eq(index + 1).css("background-color", colorArray[ce]);
+            $(".colorSlider div").eq(index + 1).css("width", "8%");
+            $(".colorSlider div").eq(index + 1).css("borderTopColor", ce);
+            $(".colorSlider div").eq(index + 1).css("borderLeftColor", ce);
+            $(".colorSlider div").eq(index + 1).css("borderRightColor", ce);
+            $(".colorSlider div").eq(index + 1).css("borderBottomColor", ce);
+            
+            /*
             let optElem = document.createElement("option");
             optElem.value = "color" + index;
             optElem.style.backgroundColor = colorArray[ce];            
@@ -17,14 +37,34 @@
                 optElem.selected = true;
                 document.getElementById("colors").style.backgroundColor = colorArray[ce];
             }
-            document.getElementById("colors").appendChild(optElem);
+            document.getElementById("colors").appendChild(optElem);*/
             index++;
         }
     }
 
+    $(".colorSlider div[class!='coltitle']").click(function () {
+        $(".colorbtn").css("background-color", $(this).css("background-color"));
+        $(".colorbtn").css("borderTopColor", $(this).css("borderTopColor"));
+        $(".colorbtn").css("borderLeftColor", $(this).css("borderLeftColor"));
+        $(".colorbtn").css("borderRightColor", $(this).css("borderRightColor"));
+        $(".colorbtn").css("borderBottomColor", $(this).css("borderBottomColor"));
+        
+        $(".colorbtn i").css("color", 
+            ($(".colorbtn").css("borderBottomColor") == "rgb(109, 109, 109)") ? "white" : 
+            $(".colorbtn").css("color") );
+        
+        
+    });
+
+    $(".colorbtn").click( function () {
+        $(".colorSlider").slideToggle("slow");
+    });
+
     function selectColor() {
-        document.getElementById("colors").style.backgroundColor = this.style.backgroundColor;
-        document.getElementById("colors").style.border = this.style.border;        
+        //$(".colorbtn").css("background-color", this.style.backgroundColor);
+        //$(".colorbtn").css("border", this.style.border);
+        //document.getElementById("colors").style.backgroundColor = this.style.backgroundColor;
+        //document.getElementById("colors").style.border = this.style.border;        
     }
 
     function updateList() {
@@ -87,25 +127,28 @@
         updateList();
     }
 
-    function checkListTask(e) {       
+    function checkListTask(e) {
         updateList(); 
     }
 
-    function checkTask() {        
+    function checkTask() {
         updateList();
     }
 
-    function newTask(e, tskcol) {
+    function newTask(e, backgcolor, bordcolor) {
 
         if (e.length > 0) {
             //let parameter = location.search.substring(1).split("=")[1];
             let liElem = document.createElement("li");
             liElem.id = document.getElementsByClassName("list")[0].childElementCount;
-            if (tskcol.backgroundColor == "rgb(109, 109, 109)") {
+            
+            if (backgcolor == "rgb(109, 109, 109)") {
                 liElem.style.color = "rgb(255, 255, 255)";
             }
-            liElem.style.backgroundColor = tskcol.backgroundColor;
-            liElem.style.borderColor = tskcol.borderColor;
+            // (backgcolor == "rgb(109, 109, 109)") ? "rgb(255, 255, 255)":
+
+            liElem.style.backgroundColor = backgcolor;
+            liElem.style.borderColor = bordcolor;
             let iElem = document.createElement("i");
             iElem.className = "fa fa-star-o";            
             let inputElem = document.createElement("input");
