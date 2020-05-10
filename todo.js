@@ -15,6 +15,8 @@
                           '#919191':'#c3c3c3', // grey
                           '#6d6d6d':'#6d6d6d' // darkgrey
         };
+
+        let currentColor;
                 
         let index = 0;
         $(".colorSlider div").eq(index).css("width", "28%");
@@ -27,22 +29,28 @@
             $(".colorSlider div").eq(index + 1).css("borderRightColor", ce);
             $(".colorSlider div").eq(index + 1).css("borderBottomColor", ce);
             
-            /*
-            let optElem = document.createElement("option");
-            optElem.value = "color" + index;
-            optElem.style.backgroundColor = colorArray[ce];            
-            optElem.style.border = "3px solid " + ce;
-            optElem.onclick = selectColor;
-            if (index == 0) {
-                optElem.selected = true;
-                document.getElementById("colors").style.backgroundColor = colorArray[ce];
-            }
-            document.getElementById("colors").appendChild(optElem);*/
             index++;
         }
+        $(".colorbtn").css("background-color", colorArray['#ffca18']);
+        $(".colorbtn").css("borderTopColor", '#ffca18');
+        $(".colorbtn").css("borderLeftColor", '#ffca18');
+        $(".colorbtn").css("borderRightColor", '#ffca18');
+        $(".colorbtn").css("borderBottomColor", '#ffca18');
+
+        $(".txtinput").css("borderTopColor", '#ffca18');
+        $(".txtinput").css("borderLeftColor", '#ffca18');
+        $(".txtinput").css("borderRightColor", '#ffca18');
+        $(".txtinput").css("borderBottomColor", '#ffca18');
+
     }
 
     $(".colorSlider div[class!='coltitle']").click(function () {
+
+        $(".txtinput").css("borderTopColor", $(this).css("borderTopColor"));
+        $(".txtinput").css("borderLeftColor", $(this).css("borderLeftColor"));
+        $(".txtinput").css("borderRightColor", $(this).css("borderRightColor"));
+        $(".txtinput").css("borderBottomColor", $(this).css("borderBottomColor"));
+
         $(".colorbtn").css("background-color", $(this).css("background-color"));
         $(".colorbtn").css("borderTopColor", $(this).css("borderTopColor"));
         $(".colorbtn").css("borderLeftColor", $(this).css("borderLeftColor"));
@@ -51,8 +59,7 @@
         
         $(".colorbtn i").css("color", 
             ($(".colorbtn").css("borderBottomColor") == "rgb(109, 109, 109)") ? "white" : 
-            $(".colorbtn").css("color") );
-        
+            $(".colorbtn").css("color"));      
         
     });
 
@@ -60,11 +67,18 @@
         $(".colorSlider").slideToggle("slow");
     });
 
-    function selectColor() {
-        //$(".colorbtn").css("background-color", this.style.backgroundColor);
-        //$(".colorbtn").css("border", this.style.border);
-        //document.getElementById("colors").style.backgroundColor = this.style.backgroundColor;
-        //document.getElementById("colors").style.border = this.style.border;        
+    $(".colorbtn").mouseover(function () {
+        currentColor = $(this).css("background-color");
+        $(this).css("background-color", selectColor($(this).css("background-color")) );
+    });
+
+    $(".colorbtn").mouseout(function () {
+        $(this).css("background-color", currentColor );
+    });
+
+    function selectColor(color) {
+        let outputColor = color.slice(0, 17) + ", 60%)";
+        return outputColor ;
     }
 
     function updateList() {
@@ -85,8 +99,7 @@
                 oneTask = allList[e].getElementsByTagName("input")[0].getElementById;
                 oneTskIndex += 1;
             }
-            //desigTask = (checkTaskList[allList[e].id] == true) ? true : desigTask;
-            
+            //desigTask = (checkTaskList[allList[e].id] == true) ? true : desigTask;            
         }
 
         document.getElementById("checked").innerHTML = oneTskIndex;
@@ -101,8 +114,7 @@
 
         $(".reset").attr("disabled", (!desigTask) ? true : false);
         $(".mark").attr("disabled", (!desigTask) ? true : false);
-        $(".edit").attr("disabled", (oneTskIndex > 0 && oneTskIndex < 2) ? false : true);
-        
+        $(".edit").attr("disabled", (oneTskIndex > 0 && oneTskIndex < 2) ? false : true);        
     }
 
     $(".mark").click( function() {
@@ -113,7 +125,6 @@
             }
         }
         updateList();
-
     });
 
     function deleteTasks() {
