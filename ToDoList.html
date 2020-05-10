@@ -19,7 +19,7 @@
     <div class="form" >
             <input class="txtinput" type="text" name="newtask" id="newtsk" placeholder="New task" >
             <!--<select class="colorlist" id="colors" ></select> -->
-            <button class="colorbtn" id="colorbtn" type="button"> <i class="material-icons">format_color_fill</i> </button>
+            <button class="colorbtn" id="colorbtn" type="button" > <i class="material-icons" >format_color_fill</i> </button>
             <input class="btninput" on onclick="newTask(document.getElementsByClassName('txtinput')[0].value,
                 $('.colorbtn').css('background-color'), $('.colorbtn').css('borderTopColor'))" type="button" value="Add">            
             
@@ -34,9 +34,9 @@
         <div class="formlist">
             <ul class="list">
                 <li id="0"> <i class="material-icons">attach_file</i> <input type="checkbox" onclick="checkListTask(this)" name="rowArray[]" id="ch0">
-                     <input type="text" value="My first task today ..." disabled> </li>
-                <li id="1" > <i class="material-icons">attach_file</i> <input type="checkbox" onclick="checkListTask(this)"  name="rowArray[]" id="ch1"> <label for="ch1">
-                    My task onother day ...<br> and much more ... </label> </li>
+                     <label for="ch0"> My first task today ... </label> </li>
+                <li id="1" > <i class="material-icons">attach_file</i> <input type="checkbox" onclick="checkListTask(this)"  name="rowArray[]" id="ch1">
+                     <label for="ch1"> My task onother day ...<br> and much more ... </label> </li>
             </ul>
             
             <input class="edit" type="submit" value="Edit" onclick="editTask()">
